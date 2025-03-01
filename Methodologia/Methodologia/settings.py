@@ -11,12 +11,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_URL = '/login/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -51,18 +54,24 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Добавь сюда
+
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 ROOT_URLCONF = 'Methodologia.urls'
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jiram.db',
-        'USER': 'postgres',
-        'PASSWORD': 'ponponlol',
-        'HOST': 'localhost',  # Или IP сервера PostgreSQL
-        'PORT': '5432',  # Порт по умолчанию
+        'NAME': os.getenv('DB_NAME', 'jiram.db'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'ponponlol'),
+        'HOST': os.getenv('DB_HOST', 'your-database-host'),  # Измени на реальный хост
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
