@@ -14,9 +14,9 @@ from pathlib import Path
 import os
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-}
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+# }
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,16 +75,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'Methodologia.urls'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME', 'jiram.db'),
-#         'USER': os.getenv('DB_USER', 'postgres'),
-#         'PASSWORD': os.getenv('DB_PASSWORD', 'ponponlol'),
-#         'HOST': os.getenv('DB_HOST', 'your-database-host'),  # Измени на реальный хост
-#         'PORT': os.getenv('DB_PORT', '5432'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'jiram.db'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'ponponlol'),
+        'HOST': os.getenv('DB_HOST', 'your-database-host'),  # Измени на реальный хост
+        'PORT': os.getenv('DB_PORT', '5432'),
+    }
+}
 
 
 TEMPLATES = [
