@@ -27,7 +27,10 @@ SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-1ec&*av1+6d_y!jbjb-4@p_w39
 # В продакшене DEBUG должен быть False
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+ALLOWED_HOSTS = os.getenv(
+    "ALLOWED_HOSTS",
+    "localhost,127.0.0.1,https://task-flow-n3qu.onrender.com,*"
+).split(",")
 
 # Настройки базы данных
 DATABASES = {
