@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # DATABASES = {
 #     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
@@ -81,7 +84,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME', 'jiram.db'),
         'USER': os.getenv('DB_USER', 'postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'ponponlol'),
-        'HOST': os.getenv('DB_HOST', 'your-database-host'),  # Измени на реальный хост
+        'HOST': os.getenv('DB_HOST', 'localhost'),  # Измени на реальный хост
         'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
