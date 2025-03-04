@@ -50,8 +50,12 @@
     <div class="input-group">
         <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
         <input type="datetime-local" name="deadline" class="form-control"
-               id="{{ form.deadline.id_for_label }}"
-               value="{{ form.deadline.value|date:'Y-m-d\TH:i' }}">
+       id="{{ form.deadline.id_for_label }}"
+       value="{{ form.deadline.value|default_if_none:'' }}">
+
+
+
+
     </div>
     <div class="form-text">Выберите дату выполнения задачи.</div>
     <div class="error-message">
